@@ -29,7 +29,7 @@ module.exports=(app) => {
         }).catch(function(error){
             console.log(error);
         });
-        // checksum_lib.genchecksum(paytmParams, 'ijJFdua2mlWQRxG#', function(err, checksum){
+        // checksum_lib.genchecksum(paytmParams, '<MERCHANT_KEY>', function(err, checksum){
             // let txn_url = "https://securegw-stage.paytm.in/theia/processTransactions"
             // let form_fields = ""
             // for(x in params){
@@ -54,7 +54,7 @@ module.exports=(app) => {
         var paytmChecksum = req.body.CHECKSUMHASH;
         delete request.body.CHECKSUMHASH;
 
-        var isVerifySignature = PaytmChecksum.verifySignature(req.body, 'ijJFdua2mlWQRxG#', paytmChecksum);
+        var isVerifySignature = PaytmChecksum.verifySignature(req.body, '<MERCHANT_KEY>', paytmChecksum);
         if (isVerifySignature) {
             console.log("Checksum Matched");
         } else {
