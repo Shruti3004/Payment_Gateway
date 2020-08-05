@@ -5,7 +5,7 @@ const port = 5000
 module.exports=(app) => {
     app.get('/payment', (req, res)=> {
         var paytmParams = {
-            "MID" : 'eIIbMy96581149439609',
+            "MID" : '<MERCHANT_ID>',
             "WEBSITE" : 'WEBSTAGING',
             "CHANNEL_ID" : 'WEB',
             "INDUSTRY_TYPE_ID" : 'Retail',
@@ -17,7 +17,7 @@ module.exports=(app) => {
             "MOBILE_NO" : req.query.phone
         }
 
-        var paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "ijJFdua2mlWQRxG#");
+        var paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "<MERCHANT_KEY>");
         paytmChecksum.then(function(checksum){
             // console.log("generateSignature Returns: " + checksum);
             console.log("checksum", checksum);
